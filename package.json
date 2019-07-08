@@ -1,0 +1,39 @@
+{
+  "name": "razor-pay-react-sdk-prodio",
+  "version": "0.0.1",
+  "description": "Sample react component code for publishing as a npm module",
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProdioDesignWorks/razor-pay-react-sdk-prodio.git"
+  },
+  "scripts": {
+    "build": "babel ./src --out-dir ./dist -s inline",
+    "prepublishOnly": "npm run build"
+  },
+  "author": {
+    "name": "Anurag Tiwari <anurag@prodio.in> (https://github.com/pawan-wagh)"
+  },
+  "peerDependencies": {
+    "react": "^16.4.0",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.8.6"
+  }
+}
