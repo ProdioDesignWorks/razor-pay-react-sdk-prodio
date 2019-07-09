@@ -1,6 +1,6 @@
 {
   "name": "razor-pay-react-sdk-prodio",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Sample react component code for publishing as a npm module",
   "files": [
     "dist/*"
@@ -15,7 +15,7 @@
     "prepublishOnly": "npm run build"
   },
   "author": {
-    "name": "Anurag Tiwari <anurag@prodio.in> (https://github.com/pawan-wagh)"
+    "name": "Anurag Tiwari <anurag@prodio.in> (https://github.com/Anurag-14)"
   },
   "peerDependencies": {
     "react": "^16.4.0",

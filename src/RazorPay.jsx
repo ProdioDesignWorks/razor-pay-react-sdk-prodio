@@ -22,7 +22,7 @@ class RazorPay extends Component {
             amount: payment_amount,
             name: name,
             description: description,
-            order_id: orderId,
+            subscription_id: orderId,
             prefill: {
                 name: 'Shashank Shekhar',
                 email: 'ss@localtrip.in',
