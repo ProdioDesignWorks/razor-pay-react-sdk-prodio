@@ -1,10 +1,25 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 class RazorPay extends Component {
+    static propTypes = {
+        onClose: PropTypes.func,
+        onPaymentResponse: PropTypes.func
+      };
 
     constructor(props) {
         super(props);
         this.checkOutRazorPay = this.checkOutRazorPay.bind(this);
         this.embedScript = this.embedScript.bind(this);
+        this.onClose = this.onClose.bind(this);
+        this.onPaymentResponse = this.onPaymentResponse.bind(this);
+    }
+
+    onClose(){
+        console.log('closed');
+        this.props.onClose();
+    }
+    onPaymentResponse(response){
+        this.props.onPaymentResponse(response);
     }
 
     checkOutRazorPay(payload){
@@ -22,10 +37,18 @@ class RazorPay extends Component {
             amount: payment_amount,
             name: name,
             description: description,
-            order_id: orderId,
+            subscription_id: orderId,
             prefill: {
-                name: 'Shashank Shekhar',
-                email: 'ss@localtrip.in',
+                name: payload.payerName ? payload.payerName : 'jonathan',
+                email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
+            },
+            handler: function (response){
+               this.onPaymentResponse(response);
+              },
+            modal: {
+                ondismiss: function(){
+                  this.onClose();
+                }
             },
             notes: {
                 address: 'Goa,India',
