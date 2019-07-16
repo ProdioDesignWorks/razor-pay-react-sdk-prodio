@@ -8,7 +8,6 @@ class RazorPay extends Component {
 
     constructor(props) {
         super(props);
-        this.checkOutRazorPay = this.checkOutRazorPay.bind(this);
         this.embedScript = this.embedScript.bind(this);
         this.onClose = this.onClose.bind(this);
         this.onPaymentResponse = this.onPaymentResponse.bind(this);
@@ -22,32 +21,34 @@ class RazorPay extends Component {
         this.props.onPaymentResponse(response);
     }
 
-    checkOutRazorPay(payload){
+    checkOutRazorPay = (payload) => {
         const {
             payment_amount,
-            orderId,
+            order_id,
             description,
             keyId,
             name
 
         } = payload;
 
+        const me = this;
+
         const options = {
             key: keyId,
             amount: payment_amount,
             name: name,
             description: description,
-            subscription_id: orderId,
+            order_id,
             prefill: {
                 name: payload.payerName ? payload.payerName : 'jonathan',
                 email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
             },
             handler: function (response){
-               this.onPaymentResponse(response);
+                me.onPaymentResponse(response);
               },
             modal: {
                 ondismiss: function(){
-                  this.onClose();
+                    me.onClose();
                 }
             },
             notes: {
