@@ -28,7 +28,7 @@ import RazorPay from  'razor-pay-react-sdk-prodio';
 ### Payload
 
 | Key | Type | Description | Required |
-| --- | ---- | ----- | ----------- | -------- |
+| --- | ---- | ----- | ----------- |
 | `order_id` | string  | order created on your server | YES |
 | `keyId` | string | key id of razor pay account | YES |
 | `name` | string | name will be shown on checkout form. | YES |
@@ -36,9 +36,8 @@ import RazorPay from  'razor-pay-react-sdk-prodio';
 | `payment_capture` | boolean | Payment capture flag to automatically capture the payment. | YES |
 
 ### Methods
-| event |  | | || | Description |
-| --- | ---- |
-| `onClose` || | || | event called  on click of close icon in checkout modal  |
-| `onPaymentResponse` || | || | event called on payment captured from razor pay |
-
+| Event | Description |
+| --- |------- |
+| `onClose` | event called  on click of close icon in checkout modal  |
+| `onPaymentResponse` | event called on payment captured from razor pay |
 
