@@ -25,6 +25,7 @@ class RazorPay extends Component {
         const {
             payment_amount,
             order_id,
+            subscription_id,
             description,
             keyId,
             name
@@ -32,32 +33,62 @@ class RazorPay extends Component {
         } = payload;
 
         const me = this;
+        let options ={};
+        if(order_id){
+            options = {
+                key: keyId,
+                order_id,
+                amount: payment_amount,
+                name: name,
+                description: description,
+                prefill: {
+                    name: payload.payerName ? payload.payerName : 'jonathan',
+                    email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
+                },
+                handler: function (response){
+                    me.onPaymentResponse(response);
+                  },
+                modal: {
+                    ondismiss: function(){
+                        me.onClose();
+                    }
+                },
+                notes: {
+                    address: 'Goa,India',
+                },
+                theme: {
+                    color: '#9D50BB',
+                },
+            };
+        }
+        else {
+            options = {
+                key: keyId,
+                amount: payment_amount,
+                subscription_id,
+                name: name,
+                description: description,
+                prefill: {
+                    name: payload.payerName ? payload.payerName : 'jonathan',
+                    email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
+                },
+                handler: function (response){
+                    me.onPaymentResponse(response);
+                  },
+                modal: {
+                    ondismiss: function(){
+                        me.onClose();
+                    }
+                },
+                notes: {
+                    address: 'Goa,India',
+                },
+                theme: {
+                    color: '#9D50BB',
+                },
+            };
+        }
 
-        const options = {
-            key: keyId,
-            amount: payment_amount,
-            name: name,
-            description: description,
-            order_id,
-            prefill: {
-                name: payload.payerName ? payload.payerName : 'jonathan',
-                email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
-            },
-            handler: function (response){
-                me.onPaymentResponse(response);
-              },
-            modal: {
-                ondismiss: function(){
-                    me.onClose();
-                }
-            },
-            notes: {
-                address: 'Goa,India',
-            },
-            theme: {
-                color: '#9D50BB',
-            },
-        };
         const rzp1 = new window.Razorpay(options);
 
         rzp1.open();
