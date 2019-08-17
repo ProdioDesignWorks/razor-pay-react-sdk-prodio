@@ -10,12 +10,25 @@ razor-pay-react-sdk-prodio provides a quick and secure way of accepting payments
 ### Example
 ```
 import RazorPay from  'razor-pay-react-sdk-prodio';
+
+  onClose = () => {
+   this.setState({openCheckoutForm:false});  
+  }
+
+  onPaymentResponse = () =>{
+    this.setState({openCheckoutForm:false});
+   //payment response after payment is successful.
+}
+  
   const payload = {
                 payment_amount:"",
                 order_id:"",
+                subscription_id:""//when recurring plan
                 description:"",
                 keyId:"",
-                name:""
+                name:"",
+               payerName:"",
+               "email":""
               };
 	<RazorPay 
 		 openCheckoutForm={true}
@@ -23,6 +36,9 @@ import RazorPay from  'razor-pay-react-sdk-prodio';
 		 onClose={()=>this.onClose()} 
 		 onPaymentResponse={(response)=>this.onPaymentResponse(response)} 
 	/>
+
+
+
 ```
 
 ### Payload
