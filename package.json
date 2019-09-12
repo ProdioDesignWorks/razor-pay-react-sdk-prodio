@@ -1,6 +1,6 @@
 {
   "name": "razor-pay-react-sdk-prodio",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Sample react component code for publishing as a npm module",
   "files": [
     "dist/*"

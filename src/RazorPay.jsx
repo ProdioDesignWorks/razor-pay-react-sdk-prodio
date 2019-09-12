@@ -42,8 +42,8 @@ class RazorPay extends Component {
                 name: name,
                 description: description,
                 prefill: {
-                    name: payload.payerName ? payload.payerName : 'jonathan',
-                    email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
+                    name: payload.payerName ? payload.payerName : '',
+                    email:payload.email ? payload.email : '',
                 },
                 handler: function (response){
                     me.onPaymentResponse(response);
