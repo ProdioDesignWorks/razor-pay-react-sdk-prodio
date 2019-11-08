@@ -29,7 +29,7 @@ class RazorPay extends Component {
             subscription_id,
             description,
             keyId,
-            name
+            name,
             callback_url = '',
             theme_color = '#9D50BB',
             redirect = false
