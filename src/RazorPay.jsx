@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+
 class RazorPay extends Component {
     static propTypes = {
         onClose: PropTypes.func,
         onPaymentResponse: PropTypes.func
-      };
+    };
 
     constructor(props) {
         super(props);
@@ -29,7 +30,9 @@ class RazorPay extends Component {
             description,
             keyId,
             name
-
+            callback_url = '',
+            theme_color = '#9D50BB',
+            redirect = false
         } = payload;
 
         const me = this;
@@ -54,11 +57,13 @@ class RazorPay extends Component {
                     }
                 },
                 notes: {
-                    address: 'Goa,India',
+                    address: '',
                 },
                 theme: {
-                    color: '#9D50BB',
+                    color: theme_color,
                 },
+                callback_url,
+                redirect
             };
         }
         else {
@@ -69,8 +74,8 @@ class RazorPay extends Component {
                 name: name,
                 description: description,
                 prefill: {
-                    name: payload.payerName ? payload.payerName : 'jonathan',
-                    email:payload.email ? payload.email : 'johanathonDoe@gmail.com',
+                    name: payload.payerName ? payload.payerName : '',
+                    email:payload.email ? payload.email : '',
                 },
                 handler: function (response){
                     me.onPaymentResponse(response);
@@ -84,8 +89,10 @@ class RazorPay extends Component {
                     address: 'Goa,India',
                 },
                 theme: {
-                    color: '#9D50BB',
+                    color: theme_color,
                 },
+                callback_url,
+                redirect
             };
         }
 
